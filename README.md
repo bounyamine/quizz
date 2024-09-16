@@ -1,71 +1,89 @@
-# Getting Started with Create React App
+# 📚 Quiz App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Une application de quiz interactive qui permet aux utilisateurs de tester leurs connaissances sur différentes catégories et niveaux de difficulté. Avec un design élégant et des fonctionnalités dynamiques, ce quiz vous offre une expérience amusante tout en suivant votre progression et vos scores.
 
-## Available Scripts
+## 🎨 Aperçu
 
-In the project directory, you can run:
+L'application de quiz permet aux utilisateurs de choisir une catégorie, de définir le nombre de questions et de sélectionner un niveau de difficulté. Les questions sont tirées d'une API ouverte et présentent un mélange de réponses correctes et incorrectes. À la fin du quiz, les utilisateurs peuvent voir leur score final et leur meilleur score historique.
 
-### `npm start`
+![Quiz App Screenshot](https://your-screenshot-url.com)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Fonctionnalités
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Sélection de catégories, de difficultés, et de nombre de questions.
+- Interface utilisateur intuitive avec affichage du score et du meilleur score.
+- Mélange aléatoire des réponses pour chaque question.
+- Réponses correctes affichées en vert, mauvaises réponses en rouge.
+- Suivi des scores avec une option de rejouer le quiz.
+- Gestion du temps pour attribuer des points en fonction de la rapidité.
+- Stockage du meilleur score en local (LocalStorage).
 
-### `npm test`
+## 🛠️ Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React.js** : pour la création de l'interface utilisateur dynamique.
+- **CSS3** : pour le style et la mise en page.
+- **Open Trivia DB API** : pour récupérer les questions du quiz.
+- **LocalStorage** : pour sauvegarder le score le plus élevé.
 
-### `npm run build`
+## 📦 Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Cloner le projet :**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/yourusername/quiz-app.git
+   cd quiz-app
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Installer les dépendances :**
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Démarrer l'application :**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Accéder à l'application :**
+   Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📖 Utilisation
 
-## Learn More
+- Sur la page de configuration, sélectionnez la catégorie, la difficulté et le nombre de questions que vous souhaitez.
+- Cliquez sur "Start Game" pour commencer le quiz.
+- Choisissez une réponse parmi les options proposées. La réponse sélectionnée deviendra verte si elle est correcte, ou rouge sinon.
+- À la fin du quiz, votre score sera affiché avec la possibilité de rejouer.
+- Un suivi des scores est conservé pour afficher votre meilleur score.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🗂 Structure du projet
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+/public
+  index.html              # Page HTML principale
+/src
+  /components             # Composants React
+  App.js                  # Composant principal de l'application
+  App.css                 # Style de l'application
+  index.js                # Point d'entrée de React
+  /utils                  # Fichiers utilitaires (ex. : gestion des questions)
+```
 
-### Code Splitting
+## 🎥 Démo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Regardez une démo en direct de l'application [ici](https://your-demo-url.com) !
 
-### Analyzing the Bundle Size
+## 🤝 Contributions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Les contributions sont les bienvenues ! Si vous souhaitez améliorer cette application ou ajouter de nouvelles fonctionnalités, veuillez suivre ces étapes :
 
-### Making a Progressive Web App
+1. Fork le projet.
+2. Créez une nouvelle branche (`git checkout -b feature/new-feature`).
+3. Committez vos changements (`git commit -am 'Ajout d'une nouvelle fonctionnalité'`).
+4. Poussez sur la branche (`git push origin feature/new-feature`).
+5. Créez une Pull Request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📄 Licence
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# calculator
+Ce projet est sous licence **MIT**. Consultez le fichier [LICENSE](./LICENSE) pour plus d'informations.
