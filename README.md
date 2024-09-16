@@ -6,9 +6,7 @@ Une application de quiz interactive qui permet aux utilisateurs de tester leurs 
 
 L'application de quiz permet aux utilisateurs de choisir une catégorie, de définir le nombre de questions et de sélectionner un niveau de difficulté. Les questions sont tirées d'une API ouverte et présentent un mélange de réponses correctes et incorrectes. À la fin du quiz, les utilisateurs peuvent voir leur score final et leur meilleur score historique.
 
-![Quiz App Screenshot](https://github.com/bounyamine/quizz/blob/main/public/screenshots/screen2.png)
-![Quiz App Screenshot](https://github.com/bounyamine/quizz/blob/main/public/screenshots/screen1.png)
-![Quiz App Screenshot](https://github.com/bounyamine/quizz/blob/main/public/screenshots/screen3.png)
+![Quiz App Screenshot](https://your-screenshot-url.com)
 
 ## 🚀 Fonctionnalités
 
@@ -32,8 +30,8 @@ L'application de quiz permet aux utilisateurs de choisir une catégorie, de déf
 1. **Cloner le projet :**
 
    ```bash
-   git clone https://github.com/yourusername/quiz-app.git
-   cd quiz-app
+   git clone https://github.com/bounyamine/quizz.git
+   cd quizz
    ```
 
 2. **Installer les dépendances :**
@@ -65,11 +63,10 @@ L'application de quiz permet aux utilisateurs de choisir une catégorie, de déf
 /public
   index.html              # Page HTML principale
 /src
-  /components             # Composants React
+  App.css                 # Style de l'application principal
   App.js                  # Composant principal de l'application
-  App.css                 # Style de l'application
   index.js                # Point d'entrée de React
-  /utils                  # Fichiers utilitaires (ex. : gestion des questions)
+  index.css               # Style des toutes les applications
 ```
 
 ## 🎥 Démo
