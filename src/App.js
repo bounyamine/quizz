@@ -47,7 +47,7 @@ const App = () => {
   const startGame = () => {
     fetchQuestions();
     setShowQuiz(true);
-    setQuizFinished(false); // Reset quiz state when starting a new game
+    setQuizFinished(false);
   };
 
   const fetchQuestions = async () => {
@@ -77,7 +77,7 @@ const App = () => {
       questionStartTime.current = Date.now();
       setSelectedAnswer(null);
     } else {
-      finishQuiz(); // End the quiz when questions are finished
+      finishQuiz();
     }
   };
 
@@ -109,7 +109,7 @@ const App = () => {
 
   const finishQuiz = () => {
     updateHighScore();
-    setQuizFinished(true); // Indicate that the quiz has finished
+    setQuizFinished(true);
     setResult(`Quiz Finished! Your final score is ${score}`);
   };
 
@@ -136,51 +136,55 @@ const App = () => {
     setQuizFinished(false);
   };
 
+  const calculateProgress = () => {
+    return ((questionIndex + 1) / questions.length) * 100;
+  };
+
   return (
     <div id="quiz-container">
       {!showQuiz ? (
         <div id="game-setup">
-          <div>
-            <label htmlFor="category">Choose a Category:</label>
-            <select
-              id="category"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="">Any Category</option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="amount">Number of Questions:</label>
-            <input
-              type="number"
-              id="amount"
-              min="1"
-              max="50"
-              value={questionAmount}
-              onChange={(e) => setQuestionAmount(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="difficulty">Select Difficulty:</label>
-            <select
-              id="difficulty"
-              value={difficulty}
-              onChange={(e) => setDifficulty(e.target.value)}
-            >
-              <option value="">Any Difficulty</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </div>
-          <button onClick={startGame}>Start Game</button>
+        <div>
+          <label htmlFor="category">Choose a Category:</label>
+          <select
+            id="category"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            <option value="">Any Category</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
         </div>
+        <div>
+          <label htmlFor="amount">Number of Questions:</label>
+          <input
+            type="number"
+            id="amount"
+            min="1"
+            max="50"
+            value={questionAmount}
+            onChange={(e) => setQuestionAmount(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="difficulty">Select Difficulty:</label>
+          <select
+            id="difficulty"
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value)}
+          >
+            <option value="">Any Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <button onClick={startGame}>Start Game</button>
+      </div>
       ) : quizFinished ? (
         <div id="quiz-finished">
           <h2>{result}</h2>
@@ -190,6 +194,12 @@ const App = () => {
         </div>
       ) : (
         <div id="quiz">
+          <div className="progress-bar-container">
+            <div
+              className="progress-bar"
+              style={{ width: `${calculateProgress()}%` }}
+            ></div>
+          </div>
           <div id="progress">{progress}</div>
           <div id="currentScore">Current Score: {score}</div>
           <div id="highScore">High Score: {highScore}</div>
