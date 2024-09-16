@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body, html{
+body,
+html {
     height: 100%;
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -12,7 +13,7 @@ body, html{
     text-align: center;
 }
 
-#quiz-container{
+#quiz-container {
     width: 100%;
     max-width: 420px;
     min-height: 500px;
@@ -28,18 +29,20 @@ body, html{
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
-#game-setup div{
+#game-setup div {
     margin: 15px 0;
 }
 
-#game-setup label{
+#game-setup label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
     color: #000;
 }
 
-#category, #amount, #difficulty{
+#category,
+#amount,
+#difficulty {
     width: 100%;
     padding: 12px;
     border-radius: 10px;
@@ -51,12 +54,14 @@ body, html{
     transition: border-color 0.2s ease;
 }
 
-#category:focus, #amount:focus, #difficulty:focus{
+#category:focus,
+#amount:focus,
+#difficulty:focus {
     border-color: #15aabf;
     outline: none;
 }
 
-#start-btn{
+#start-btn {
     padding: 14px;
     background-color: #1c1917;
     color: #fff;
@@ -70,19 +75,21 @@ body, html{
     margin-top: 20px;
 }
 
-#start-btn:hover{
+#start-btn:hover {
     background-color: #15aabf;
     transform: scale(1.05);
 }
 
-#progress, #currentScore, #highScore{
+#progress,
+#currentScore,
+#highScore {
     margin-bottom: 12px;
     font-size: 1.1em;
     font-weight: 500;
     color: #444;
 }
 
-#question{
+#question {
     font-size: 1.2em;
     margin: 25px 0;
     color: #5a5a5a;
@@ -94,7 +101,7 @@ body, html{
     width: 100%;
 }
 
-.answer-btn{
+.answer-btn {
     width: calc(100% - 20px);
     padding: 12px;
     margin-bottom: 15px;
@@ -106,37 +113,43 @@ body, html{
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+  }
+  
+  .answer-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .answer-btn.correct {
+    background-color: #4caf50 !important;
+    color: #fff;
+  }
+  
+  .answer-btn.incorrect {
+    background-color: #f44336 !important;
+    color: #fff;
+  }
+  
+  .answer-btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
 
-.answer-btn:hover{
+.answer-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.answer-btn:disabled{
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-}
 
-.correct{
-    background-color: #4caf50 !important;
-    color: #fff;
-}
-
-.incorrect{
-    background-color: #f44336 !important;
-    color: #fff;
-}
-
-#result{
+#result {
     font-size: 1.1em;
     color: #5a5a5a;
     margin-top: 20px;
     font-weight: 500;
 }
 
-button{
+button {
     padding: 14px 20px;
     background-color: #ff5722;
     color: #fff;
@@ -148,7 +161,7 @@ button{
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover{
+button:hover {
     background-color: #e64a19;
     transform: scale(1.05);
 }
