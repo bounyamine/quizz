@@ -31,8 +31,8 @@ L'application de quiz permet aux utilisateurs de choisir une catégorie, de déf
 1. **Cloner le projet :**
 
    ```bash
-   git clone https://github.com/yourusername/quiz-app.git
-   cd quiz-app
+   git clone https://github.com/bounyamine/quizz.git
+   cd quizz
    ```
 
 2. **Installer les dépendances :**
@@ -64,11 +64,10 @@ L'application de quiz permet aux utilisateurs de choisir une catégorie, de déf
 /public
   index.html              # Page HTML principale
 /src
-  /components             # Composants React
+  App.css                 # Style de l'application principal
   App.js                  # Composant principal de l'application
-  App.css                 # Style de l'application
   index.js                # Point d'entrée de React
-  /utils                  # Fichiers utilitaires (ex. : gestion des questions)
+  index.css               # Style des toutes les applications
 ```
 
 ## 🎥 Démo
