@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 
 const App = () => {
@@ -14,6 +14,8 @@ const App = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [result, setResult] = useState('');
   const [progress, setProgress] = useState('');
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [, setAnswerState] = useState('');
   const questionStartTime = useRef(null);
 
   const baseScorePerQuestion = 1000;
@@ -23,12 +25,26 @@ const App = () => {
     fetchCategories();
   }, []);
 
+  // Utilisation de useCallback pour mémoriser la fonction displayQuestion
+  const displayQuestion = useCallback(() => {
+    if (questionIndex < questions.length) {
+      setCurrentQuestion(questions[questionIndex]);
+      setProgress(`Question ${questionIndex + 1}/${questions.length}`);
+      setAnswerState('');
+      setSelectedAnswer('');
+      questionStartTime.current = Date.now();
+    } else {
+      updateHighScore();
+      setResult(`Quiz Finished! Your final score is ${score}`);
+    }
+  // eslint-disable-next-line no-use-before-define
+  }, [questionIndex, questions, score, updateHighScore]); // Ajout des dépendances pertinentes
+
   useEffect(() => {
     if (questions.length > 0 && questionIndex < questions.length) {
       displayQuestion();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [questions, questionIndex]);
+  }, [questions, questionIndex, displayQuestion]);
 
   const fetchCategories = async () => {
     const response = await fetch('https://opentdb.com/api_category.php');
@@ -54,26 +70,18 @@ const App = () => {
     setScore(0);
   };
 
-  const displayQuestion = () => {
-    if (questionIndex < questions.length) {
-      setCurrentQuestion(questions[questionIndex]);
-      setProgress(`Question ${questionIndex + 1}/${questions.length}`);
-      questionStartTime.current = Date.now();
-    } else {
-      updateHighScore();
-      setResult(`Quiz Finished! Your final score is ${score}`);
-    }
-  };
-
-  const selectAnswer = (selectedAnswer) => {
+  const selectAnswer = (answer) => {
+    setSelectedAnswer(answer);
     const correctAnswer = currentQuestion.correct_answer;
     const timeTaken = (Date.now() - questionStartTime.current) / 1000;
     let scoreForThisQuestion = Math.max(baseScorePerQuestion - Math.floor(timeTaken) * penaltyPerSecond, 0);
 
-    if (selectedAnswer === correctAnswer) {
+    if (answer === correctAnswer) {
       setScore(score + scoreForThisQuestion);
+      setAnswerState('correct');
       setResult(`Correct! + ${scoreForThisQuestion} Points`);
     } else {
+      setAnswerState('incorrect');
       setResult(`Wrong! The correct answer was: ${correctAnswer}`);
     }
 
@@ -83,12 +91,13 @@ const App = () => {
     }, 3000);
   };
 
-  const updateHighScore = () => {
+  const updateHighScore = useCallback(() => {
     if (score > highScore) {
       setHighScore(score);
       localStorage.setItem('HighScoreTrivia', score);
     }
-  };
+  }, [score, highScore]);
+  
 
   return (
     <div id="quiz-container">
@@ -144,9 +153,14 @@ const App = () => {
             <>
               <div id="question">{currentQuestion.question}</div>
               <div id="answers">
-                {[...currentQuestion.incorrect_answers, currentQuestion.correct_answer].map(
+                {[...currentQuestion.incorrect_answers, currentQuestion.correct_answer].sort().map(
                   (answer, index) => (
-                    <button key={index} onClick={() => selectAnswer(answer)}>
+                    <button
+                      key={index}
+                      onClick={() => selectAnswer(answer)}
+                      className={`answer-btn ${selectedAnswer === answer ? (answer === currentQuestion.correct_answer ? 'correct' : 'incorrect') : ''}`}
+                      disabled={selectedAnswer !== ''}
+                    >
                       {answer}
                     </button>
                   )
