@@ -6,7 +6,7 @@ Une application de quiz interactive qui permet aux utilisateurs de tester leurs 
 
 L'application de quiz permet aux utilisateurs de choisir une catégorie, de définir le nombre de questions et de sélectionner un niveau de difficulté. Les questions sont tirées d'une API ouverte et présentent un mélange de réponses correctes et incorrectes. À la fin du quiz, les utilisateurs peuvent voir leur score final et leur meilleur score historique.
 
-![Quiz App Screenshot](https://your-screenshot-url.com)
+![Quiz App Screenshot](https://github.com/bounyamine/quizz/blob/main/public/screenshots/screen1.png)
 
 ## 🚀 Fonctionnalités
 
